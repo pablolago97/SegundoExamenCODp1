@@ -18,7 +18,7 @@ public class ExamenRefactorizacionCOD {
     //LIstar los numeros según el numero de digitos indicado
     //Considero solo hasta numeros menores a 100000 (5 digitos), 
     //por el hecho de k buscar numeros primos a partir de 6 digitos, el proceso se hace muy lento.
-    public static boolean primo = false;
+    public static boolean primo = false; // 'numero primo' = false
 
     public static void main(String[] args) {
         int digito = 3;
@@ -87,3 +87,4 @@ public class ExamenRefactorizacionCOD {
     
 
 }
+//Añadí este commit para decir que me olvidé de realizar un commit inicial, con lo cual, en el primer commit no aparecerá el formateo de código.
