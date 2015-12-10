@@ -18,12 +18,12 @@ public class ExamenRefactorizacionCOD {
     //LIstar los numeros según el numero de digitos indicado
     //Considero solo hasta numeros menores a 100000 (5 digitos), 
     //por el hecho de k buscar numeros primos a partir de 6 digitos, el proceso se hace muy lento.
-    public static boolean p = false;
+    public static boolean primo = false;
 
     public static void main(String[] args) {
-        int dig = 3;
-        int ndig = 0;
-        if (dig <= 0) {
+        int digito = 3;
+        int numeroDigitos = 0;
+        if (digito <= 0) {
             System.out.println("Ingrese como parámetro, un numero de digitos correcto (mayor que 0): ");
         }
         for (int i = 1; i <= 99999; i++) {
@@ -31,18 +31,14 @@ public class ExamenRefactorizacionCOD {
 
             int contador = 0;
 
-            while (aux != 0) {
-                aux = aux / 10;
-                contador++;
-            }
-            ndig = contador;
+            numeroDigitos = devolverContador(aux, contador);
 
-            if (ndig == dig) {
+            if (numeroDigitos == digito) {
                 if (i < 4) {
-                    p = true;
+                    primo = true;
                 } else {
                     if (i % 2 == 0) {
-                        p = false;
+                        primo = false;
                     } else {
                         int contador1 = 0;
                         int i1 = 1;
@@ -51,27 +47,43 @@ public class ExamenRefactorizacionCOD {
                             k--;
                         }
 
-                        while (i1 <= k) {
-                            if (i % i1 == 0) {
-                                contador1++;
-                            }
-                            i1 += 2;
-                            if (contador1 == 2) {
-                                i1 = k + 1;
-                            }
-                        }
+                        contador1 = primoDivisible(i1, k, i, contador1);
 
                         if (contador1 == 1) {
-                            p = true;
+                            primo = true;
                         }
                     }
                 }
 
-                if (p == true) {
+                if (primo == true) {
                     System.out.println(i);
                 }
             }
         }
     }
+
+    public static int primoDivisible(int i1, int k, int i, int contador1) {
+        
+        while (i1 <= k) {
+            if (i % i1 == 0) {
+                contador1++;
+            
+            }i1 += 2;
+            if (contador1 == 2) {
+                i1 = k + 1;
+            }
+        }
+        return contador1;
+    }
+
+    public static int devolverContador(int aux, int contador) {
+        while (aux != 0) {
+            aux = aux / 10;
+            contador++;
+        }
+        return contador;
+    }
+    
+    
 
 }
